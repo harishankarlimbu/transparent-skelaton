@@ -1,10 +1,30 @@
 import { Header } from './components/Header';
 import { ScriptInput } from './components/ScriptInput';
-import { WorkflowGuide } from './components/WorkflowGuide';
 import { useBrollGenerator } from './hooks/useBrollGenerator';
 
 function App() {
-  const { script, setScript, isGenerating, handleGenerate } = useBrollGenerator();
+  const { 
+    script, 
+    setScript, 
+    formattedScript,
+    isFormatting,
+    isGenerating, 
+    showFormattedOutput,
+    showStyleOptions,
+    selectedStyle,
+    setSelectedStyle,
+    error,
+    handleFormat,
+    handleGenerateClick,
+    handleGenerateBroll,
+    showConfirmDialog,
+    confirmFormat,
+    cancelFormat,
+    showClearDialog,
+    handleClearClick,
+    confirmClear,
+    cancelClear,
+  } = useBrollGenerator();
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
@@ -13,10 +33,25 @@ function App() {
         <ScriptInput 
           script={script} 
           setScript={setScript} 
-          onGenerate={handleGenerate} 
+          formattedScript={formattedScript}
+          onFormat={handleFormat}
+          onGenerateClick={handleGenerateClick}
+          onGenerateBroll={handleGenerateBroll}
+          isFormatting={isFormatting}
           isGenerating={isGenerating} 
+          showFormattedOutput={showFormattedOutput}
+          showStyleOptions={showStyleOptions}
+          selectedStyle={selectedStyle}
+          setSelectedStyle={setSelectedStyle}
+          error={error}
+          showConfirmDialog={showConfirmDialog}
+          confirmFormat={confirmFormat}
+          cancelFormat={cancelFormat}
+          showClearDialog={showClearDialog}
+          onClear={handleClearClick}
+          confirmClear={confirmClear}
+          cancelClear={cancelClear}
         />
-        <WorkflowGuide />
       </div>
     </div>
   );

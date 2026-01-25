@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev": "concurrently -n \"backend,frontend\" -c \"cyan,magenta\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "start": "npm run dev",
+    "watch": "npm run dev",
     "backend": "npm run dev --prefix backend",
     "frontend": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix backend && npm run build --prefix frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
